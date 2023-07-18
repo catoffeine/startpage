@@ -1,5 +1,81 @@
 @import './vars';
 
 body, html {
-    background-color: $bgcolor;
+    background-color: $bg_color;
+}
+
+* {
+    font-family: FiraMono_Regular;
+}
+
+span {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+}
+
+.search_input_text {
+    height: 100%;
+    width: 8px;
+    min-width: 8px;
+    border: none;
+    
+}
+
+.opening_tilda {
+    color: $main_text_color;
+}
+
+.command_open {
+    color: $opencommand_color;
+}
+
+.search_engine, .opening_engine, .closing_engine {
+    color: $path_color;
+} 
+
+.closing_engine {
+    position: relative;
+    &::after {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        right: -4px;
+        width: 1px;
+        height: 100%;
+        background-color: $path_color;
+        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation-duration: 1.4s;
+        animation-iteration-count: infinite;
+        animation-name: inputAnimation;
+    }
+}
+
+
+.search_input_measure, .search_input_text {
+    font-size: 32px;
+    background-color: transparent;
+    outline: none;
+    font-family: Sans-serif;
+    white-space: pre;
+    padding: 0;
+    margin: 0;
+}
+
+.search_input_measure {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+@keyframes inputAnimation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 0;
+    }
 }

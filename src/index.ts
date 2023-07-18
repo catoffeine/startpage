@@ -1,6 +1,4 @@
 import './styles.scss'
+import './scripts/inputEngine'
 
 'use strict';
-let n: number = 5;
-
-console.log(n*n)

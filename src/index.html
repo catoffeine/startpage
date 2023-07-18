@@ -8,10 +8,43 @@
 
 <body>
 
-    <form id="search">
-        <input class="search_google" url="https://google.com/search" method="get">
-    </form>
+    <div class="container">
+        <header class="header">
+            <div class="header_bookmarks">
+                <button></button>
+                <p>bookmarks</p>
+            </div>
+            <div class="header_settings">
+                <button></button>
+            </div>
+        </header>
 
+        <div class="search_input">
+            <span class="opening_tilda">~$ </span>
+            <span class="command_open">open </span>
+            <span class="opening_engine">~/<span><span class="search_engine">google</span><span class="closing_engine">/"</span><input class="search_input_text" type="text" method="get"><span class="search_input_measure"></span><span class="closing_request">"</span>
+        </div>
+
+        <div class="engines_row">
+            <div class="engines">
+                <div class="engines_item">google</div>
+                <div class="engines_item">duckduckgo</div>
+                <div class="engines_item">yandex</div>
+            </div>
+
+            <div class="edit_mode">
+                <div class="edit_mode_text"></div>
+                <div class="edit_mode_switcher">
+                    <div class="button_on active">on</div>
+                    <div class="button_off">off</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="links"></div>
+
+    </div>
+    
 </body>
 
 </html>
