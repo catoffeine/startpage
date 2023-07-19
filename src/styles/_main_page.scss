@@ -14,12 +14,18 @@ span {
     font-size: 32px;
 }
 
+.form_input_text {
+    width: 5px;
+    min-width: 5px;
+}
+
 .search_input_text {
+    color: $path_color;
+    caret-color: $path_color;
     height: 100%;
-    width: 8px;
-    min-width: 8px;
+    width: 5px;
+    min-width: 5px;
     border: none;
-    
 }
 
 .opening_tilda {
@@ -40,15 +46,22 @@ span {
         content: '';
         pointer-events: none;
         position: absolute;
-        right: -4px;
+        right: -1px;
         width: 1px;
         height: 100%;
         background-color: $path_color;
-        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-        animation-duration: 1.4s;
-        animation-iteration-count: infinite;
-        animation-name: inputAnimation;
+        opacity: 0;
+        
     }
+
+    
+}
+
+.closing_engine_active::after {
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-duration: 1.4s;
+    animation-iteration-count: infinite;
+    animation-name: inputAnimation;
 }
 
 
@@ -67,6 +80,7 @@ span {
     left: -9999px;
     top: -9999px;
 }
+
 
 @keyframes inputAnimation {
     0% {
