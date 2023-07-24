@@ -4,3 +4,7 @@ export enum EnginesAlias {
     duckduckgo = 'duckduckgo',
     brave = 'brave'
 }
+
+export enum DialogBoxClasses {
+    div_main = 'dialog_box',
+}
