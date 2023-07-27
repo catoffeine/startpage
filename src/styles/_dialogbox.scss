@@ -1,20 +1,45 @@
-$dialogbox_fadeinduration: 2s;
-
 .dialogbox_list {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
     right: 0;
     height: 100%;
     width: 420px;
 }
 
-.dialogbox_list_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    overflow-y: hidden;
-    right: 0;
-    height: 100%;
-    width: 100%;
+.dialog_box_fadein {
+    animation-name: dialog_fadeinouter_animation;
+    animation-duration: $dialogbox_fadeinduration;
+    animation-timing-function: cubic-bezier(.17,.86,.02,1.05);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    .dialog_box {
+        animation-name: dialog_fadein_animation;
+        animation-duration: $dialogbox_fadeinduration;
+        animation-timing-function: cubic-bezier(.17,.86,.02,1.05);
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+}
+
+.dialog_box_fadeout {
+    animation-name: dialog_fadeoutouter_animation;
+    animation-delay: 0.4 * $dialogbox_fadeoutduration;
+    animation-duration: $dialogbox_fadeoutduration;
+    animation-timing-function: cubic-bezier(.15,.94,.23,1.11);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    
+    .dialog_box {
+        animation-name: dialog_fadeout_animation;
+        animation-duration: $dialogbox_fadeoutduration;
+        animation-timing-function: cubic-bezier(.15,.94,.23,1.11);
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
 }
 
 .dialog_box {
@@ -25,21 +50,14 @@ $dialogbox_fadeinduration: 2s;
     position: relative;
     background-color: $dialogbox_bgcolor;
     border-radius: 10px;
-    &_active {
-        animation-name: dialog_fadein_animation;
-        animation-duration: $dialogbox_fadeinduration;
-        animation-timing-function: cubic-bezier(.17,.86,.02,1.05);
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
 }
 
 .dialog_box_outer {
-    position: absolute;
+    position: relative;
 }
 
 .dialog_container {
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
@@ -79,7 +97,6 @@ $dialogbox_fadeinduration: 2s;
     border-radius: 10px 0 10px 0;
     &_active {
         animation-name: dialog_timeline_animation;
-        animation-delay: $dialogbox_fadeinduration;
         animation-duration: 1.5s;
         animation-timing-function: linear;
         animation-iteration-count: 1;
@@ -87,13 +104,40 @@ $dialogbox_fadeinduration: 2s;
     }
 }
 
-@keyframes dialog_fadein_animation {
+@keyframes dialog_fadeoutouter_animation {
+    0% {
+        height: 60px;
+    }
+    100% {
+        height: 0;
+    }
+}
+
+@keyframes dialog_fadeinouter_animation {
     0% {
         height: 0;
-        bottom: -80px;
     }
     100% {
         height: 60px;
+    }
+}
+
+@keyframes dialog_fadeout_animation {
+    0% {
+        opacity: 1;
+        right: 0;
+    }
+    100% {
+        opacity: 0;
+        right: -100%;
+    }
+}
+
+@keyframes dialog_fadein_animation {
+    0% {
+        bottom: -80px;
+    }
+    100% {
         bottom: 20px;
     }
 }
