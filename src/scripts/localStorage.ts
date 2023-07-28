@@ -14,10 +14,10 @@ export namespace LStorage {
             res = localStorage.getItem(item);
         }
         switch(type) {
-            case LSTypes.Number: return +res;
-            case LSTypes.String: return res;
-            case LSTypes.Object: return JSON.parse(res);
+            case LSTypes.Number: res = +res;
+            case LSTypes.Object: res = JSON.parse(res);
         }
+        return res
     }
 
     export const checkDefaultValues = (): void => {

@@ -6,7 +6,7 @@ import { DialogBox } from './scripts/dialogboxEngine';
 
 document.getElementById('testbutton').addEventListener('click', () => {
     DialogBox.create_dialogbox({
-        message: 'Meow',
+        message: 'Fsjfsgjlsjglsjgsjgsgjsgjsgjsgjsgjsgjsjgsjgsjg',
         dialog_type: DialogBox.DialogType.Info,
         life_time: 5
     });

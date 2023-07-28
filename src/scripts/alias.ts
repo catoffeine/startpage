@@ -1,4 +1,3 @@
-
 export enum EnginesAlias {
     google = 'google',
     duckduckgo = 'duckduckgo',
