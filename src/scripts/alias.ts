@@ -6,6 +6,7 @@ export enum EnginesAlias {
 }
 
 export enum DialogBoxClasses {
+    Main = 'dialogbox_list',
     Outer = 'dialog_box_outer',
     DialogBox = 'dialog_box',
     DialogInfoBox = 'dialog_infobox',
@@ -13,22 +14,15 @@ export enum DialogBoxClasses {
     Message = 'dialog_message',
     TimeLine = 'dialog_time_line',
     TimeLineActive = DialogBoxClasses.TimeLine + '_active',
+    FadeIn = 'dialog_box_fadein',
+    FadeOut = 'dialog_box_fadeout'
 }
 
-export namespace LocalStorageData {
-    type LSType = {
-        key: string,
-        defaultvalue: string
-    }
-
-    const TimeLineAnimationDuration: LSType = {
-        key: 'TimeLineAnimationDuration',
-        defaultvalue: 1.5.toString()
-    }
-
-
-    export const LSKeys: Array<LSType> = [
-        TimeLineAnimationDuration,
-    ]
+export enum LSKeys {
+    TimeLineAnimationDuration = 'TimeLineAnimationDuration',
 }
 
+
+export const LSDefaultValues: { [key in LSKeys]?: string } = {
+    [LSKeys.TimeLineAnimationDuration]: 1.5.toString(),
+}

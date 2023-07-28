@@ -14,31 +14,30 @@
     animation-duration: $dialogbox_fadeinduration;
     animation-timing-function: cubic-bezier(.17,.86,.02,1.05);
     animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    // animation-fill-mode: forwards;
 
     .dialog_box {
         animation-name: dialog_fadein_animation;
         animation-duration: $dialogbox_fadeinduration;
         animation-timing-function: cubic-bezier(.17,.86,.02,1.05);
         animation-iteration-count: 1;
-        animation-fill-mode: forwards;
+        // animation-fill-mode: forwards;
     }
 }
 
 .dialog_box_fadeout {
     animation-name: dialog_fadeoutouter_animation;
-    animation-delay: 0.4 * $dialogbox_fadeoutduration;
     animation-duration: $dialogbox_fadeoutduration;
     animation-timing-function: cubic-bezier(.15,.94,.23,1.11);
     animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+    // animation-fill-mode: forwards;
     
     .dialog_box {
         animation-name: dialog_fadeout_animation;
         animation-duration: $dialogbox_fadeoutduration;
         animation-timing-function: cubic-bezier(.15,.94,.23,1.11);
         animation-iteration-count: 1;
-        animation-fill-mode: forwards;
+        // animation-fill-mode: forwards;
     }
 }
 

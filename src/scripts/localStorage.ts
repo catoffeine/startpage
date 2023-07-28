@@ -1,20 +1,37 @@
-import { LocalStorageData } from "./alias"
+import { LSDefaultValues } from "./alias"
 
+export namespace LStorage {
+    export enum LSTypes {
+        Number,
+        String,
+        Object
+    }
 
+    export const getItem = (item: string, type: LSTypes): any => {
+        let res: any = localStorage.getItem(item);
+        if (!res) {
+            checkDefaultValues();
+            res = localStorage.getItem(item);
+        }
+        switch(type) {
+            case LSTypes.Number: return +res;
+            case LSTypes.String: return res;
+            case LSTypes.Object: return JSON.parse(res);
+        }
+    }
 
-export namespace LocalStorage {
     export const checkDefaultValues = (): void => {
-        LocalStorageData.LSKeys.forEach(el => {
-            if (!localStorage.getItem(el.key)) localStorage.setItem(el.key, el.defaultvalue);
-        });
+        for (const [key, value] of Object.entries(LSDefaultValues)) {
+            if (!localStorage.getItem(key)) localStorage.setItem(key, value);
+        }
     }
 
     export const exportLocalStorage = (): string => {
         let LSObject: any;
 
-        LocalStorageData.LSKeys.forEach(el => {
-            LSObject[el.key] = localStorage.getItem(el.key);
-        });
+        for (const [key, value] of Object.entries(LSDefaultValues)) {
+            LSObject[key] = localStorage.getItem(value);
+        }
 
         return JSON.stringify(LSObject);
     }

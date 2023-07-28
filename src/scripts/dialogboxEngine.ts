@@ -1,9 +1,9 @@
-import { DialogBoxClasses } from "./alias"
-import { LocalStorage } from './localStorage'
+import { DialogBoxClasses, LSKeys } from "./alias"
+import { LStorage } from "./localStorage"
 
 
-namespace DialogBox {
-    enum DialogType {
+export namespace DialogBox {
+    export enum DialogType {
         Info = 'Info',
         Error = 'Error'
     }
@@ -14,7 +14,7 @@ namespace DialogBox {
         life_time?: number
     }
 
-    const create_dialogbox = (settings: DialogSettings): void => {
+    export const create_dialogbox = async (settings: DialogSettings) => {
         settings.dialog_type = settings.dialog_type || DialogType.Info;
         settings.life_time = settings.life_time || 1.5; //in seconds
 
@@ -43,11 +43,19 @@ namespace DialogBox {
 
         dialog_timeline.classList.add(DialogBoxClasses.TimeLineActive);
 
-        // const timeline_animation_duration: number = +localStorage.getItem(LocalStorageKeys.DialogBox.TimeLineAnimationDuration);
-        // const timeline_animation_duration: number = LocalStorage.getItem(LocalStorageKeys.DialogBox.TimeLineAnimationDuration, LocalStorage.ValueTypes.Number, 1.5);
+        const timeline_animation_duration: number = LStorage.getItem(LSKeys.TimeLineAnimationDuration, LStorage.LSTypes.Number);
+        dialog_timeline.style.animationDuration += timeline_animation_duration.toString() + 's;';
+        dialog_outer.classList.toggle(DialogBoxClasses.FadeIn);
 
-        dialog_timeline.style.animationDuration = '1.5s';
+        document.querySelector('.' + DialogBoxClasses.Main).appendChild(dialog_outer);
         
+        // setTimeout(() => {
+        //     dialog_outer.classList.toggle(DialogBoxClasses.FadeIn);
+        //     dialog_outer.classList.toggle(DialogBoxClasses.FadeOut);
+        //     setTimeout(() => {
+        //         document.querySelector('.' + DialogBoxClasses.Main).removeChild(dialog_outer);
+        //     }, 1500);
+        // }, timeline_animation_duration * 1000);
     }
 }
 
