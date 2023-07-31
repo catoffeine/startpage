@@ -26,6 +26,10 @@ export namespace LStorage {
         }
     }
 
+    export const clearLocalStorage = (): void => {
+        localStorage.clear();
+    }
+
     export const exportLocalStorage = (): string => {
         let LSObject: any;
 

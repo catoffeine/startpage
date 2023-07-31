@@ -1,5 +1,6 @@
-import { DialogBoxClasses, LSKeys } from "./alias"
-import { LStorage } from "./localStorage"
+import { DialogBoxClasses, LSKeys } from "./alias";
+import { LStorage } from "./localStorage";
+import dialogbox_info_circle from '../images/dialogbox_info_circle.svg';
 
 
 export namespace DialogBox {
@@ -85,7 +86,29 @@ export namespace DialogBox {
         dialog_container.appendChild(dialog_infobox);
         dialog_container.appendChild(dialog_message);
 
-        dialog_infobox.innerText = settings.dialog_type;
+        //Getting the styles
+        const dialogbox_styles = LStorage.getItem(LSKeys.DialogBoxColors, LStorage.LSTypes.Object);
+        
+        let dbox_colors;
+        switch (settings.dialog_type) {
+            case DialogType.Info: { 
+                dbox_colors = dialogbox_styles.info; 
+                dialog_infobox.style.backgroundImage = dialogbox_info_circle;
+                break;
+             }
+            case DialogType.Error: { 
+                dbox_colors = dialogbox_styles.error;
+                break;
+             }
+            default: { dbox_colors = dialogbox_styles.info; break; }
+        }
+        
+        dialog_box.style.backgroundColor = dbox_colors.bgcolor;
+        dialog_infobox.style.color = dbox_colors.textcolor;
+        dialog_timeline.style.backgroundColor = dbox_colors.timelinecolor;
+        dialog_message.style.color = dbox_colors.textcolor;
+
+        // dialog_infobox.innerText = settings.dialog_type;
         dialog_message.innerText = settings.message;
 
         dialog_timeline.classList.add(DialogBoxClasses.TimeLineActive);

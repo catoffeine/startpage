@@ -19,9 +19,24 @@ export enum DialogBoxClasses {
 
 export enum LSKeys {
     TimeLineAnimationDuration = 'TimeLineAnimationDuration',
+    DialogBoxColors = 'DialogBoxColors'
 }
 
 
 export const LSDefaultValues: { [key in LSKeys]?: string } = {
-    [LSKeys.TimeLineAnimationDuration]: 1.5.toString(),
+    [LSKeys.TimeLineAnimationDuration]: 2.5.toString(),
+    [LSKeys.DialogBoxColors]: JSON.stringify({
+        info: {
+            bgcolor: '#678D48',
+            timelinecolor: '#95C884',
+            infoboxcolor: '#759C57',
+            textcolor: '#ffffff'
+        },
+        error: {
+            bgcolor: '#933E3E',
+            timelinecolor: '#D66D6D',
+            infoboxcolor: '#A44949',
+            textcolor: '#FFFFFF'
+        }
+    }),
 }

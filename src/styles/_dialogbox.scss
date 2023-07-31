@@ -58,29 +58,30 @@
     height: 100%;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
     align-content: center;
 }
 
 .dialog_infobox {
     margin-left: 10px;
-    width: 50px;
-    height: 32px;
-    background-color: $dialogbox_infoboxcolor;
-    border-radius: 10px;
-    font-size: 16px;
-    font-family: 'FiraMono_Regular';
-    text-align: center;
-    line-height: 32px;
-    color: $dialogbox_textcolor;
+    background-image: url('images/dialogbox_info_circle.svg');
+    fill: white;
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    color: white;
 }
 
 .dialog_message {
-    width: 90%;
+    width: 80%;
+    text-overflow: ellipsis;
     overflow: hidden;
-    margin-left: 10px;
+    margin-left: 5px;
     font-size: 16px;
+    white-space: nowrap;
     font-family: 'FiraMono_Regular';
     color: $dialogbox_textcolor;
 }
